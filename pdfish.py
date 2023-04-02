@@ -13,17 +13,18 @@ logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
 
 
-INPUT_PDF_PATH = './resources/document.pdf'
 OUTPUT_PDF_PATH = './var/output.pdf'
 RGB = '0,0,0'
 COLOR_GAP = 30
 SHADOW = 0.7
 
 
-def main():    
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default=INPUT_PDF_PATH,
-                        help='Input PDF file path. (default: ./resources/document.pdf)')
+def main():
+    parser = argparse.ArgumentParser(
+        prog='pdfish',
+        description='Detect and highlight areas of specified color in PDF file.')
+    parser.add_argument('--input', type=str, required=True,
+                        help='Input PDF file path. (required)')
     parser.add_argument('--output', type=str, default=OUTPUT_PDF_PATH,
                         help='Output PDF file path. (default: ./var/output.pdf)')
     parser.add_argument('--rgb', type=str, default=RGB,
